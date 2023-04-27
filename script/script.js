@@ -4,20 +4,25 @@ createApp({
   data(){
     return{
       titolo: 'email list',
-      apiUrl: 'https://flynn.boolean.careers/exercises/api/random/mail'
+      apiUrl: 'https://flynn.boolean.careers/exercises/api/random/mail',
+      emails: [], 
+      isLoaded: false,
+      limit: 10
     }
   },
   methods:{
     getApi(){
-      axios.get(this.apiurl)
+      axios.get(this.apiUrl)
       .then( res => {
-        console.log(res.data.response);
-        this.email = res.data.response;
-        this.isloaded = true
+        this.emails.push(res.data.response);
+        console.log(this.emails);
+        this.isLoaded = true
       })
     }
   },
   mounted(){
-    this.getapi()
-  }
+    for(let i = 0; i < this.limit; i++){
+    this.getApi()
+    }
+  },
 }).mount('#app')

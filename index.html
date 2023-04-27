@@ -15,8 +15,10 @@
 
   <h1>{{titolo}}</h1>
 
-  <p v-if="!isloaded">loading...</p>
-  <p v-else>{{email}}</p>
+  <p v-if="!isLoaded">loading...</p>
+  <ul v-else>
+    <li v-for="email in emails">{{email}}</li>
+  </ul>
   </div>
 
 <script src="script/script.js"></script>
